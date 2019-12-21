@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>All Notices</h3>
+<div class="mt-3">
+    <ul class="list-group">
+    {% for notice in notices %}
+    <li class="list-group-item bg-dark text-white">
+        <a href="{% url 'detail' notice.id %}" class="text-white">{{ notice}}</a>
+    <span class="float-right">{{notice.created_date}}</span>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+<ul class="pagination mt-2">
+    {% if notices.has_previous %}
+    <li class="page-item"><a href="?page=1" class="page-link">&laquo; first</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ notices.previous_page_number }}">previous</a></li>
+    {% endif %}
+
+    {% if notices.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ notices.next_page_number }}">next</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ notices.paginator.num_pages }}">last &raquo;</a></li>
+    {% endif %}
+</li>
+</ul>
+{% endblock %}

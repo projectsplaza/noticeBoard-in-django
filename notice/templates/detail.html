@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Notice Detail <a href="{% url 'home' %}" class="float-right btn btn-primary">All Notices</a></h3>
+<div class="mt-3 bg-dark p-3 text-white">
+    <h5>{{detail.title}}</h5>
+    <hr class="bg-white" />
+    <p>{{detail.body}}</p>
+    <hr class="bg-white" />
+    <small>{{detail.created_date}}</small>
+</div>
+{% endblock %}
